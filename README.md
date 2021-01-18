@@ -1,4 +1,4 @@
 # warmains
-Newest version is: http://app-wm.herokuapp.com/
+Newest version is: https://wormainsofdoom.herokuapp.com/
 
 ![](https://imgur.com/fpO6Vwg.png)
