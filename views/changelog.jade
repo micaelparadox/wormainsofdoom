@@ -1,0 +1,78 @@
+doctype html
+html
+    include partials/head.jade
+    body
+      <script>document.body.className += ' fade-out';</script>
+      include partials/navbar.jade
+      header
+        .header-content
+          .header-content-inner
+            h1 Changelog
+            hr
+      .container
+        div(class='changeLog')
+
+          h4 v3.1.6 - 07/04/2017
+
+          p - Right Click Search Table items to Equip them
+          p - BoP/BoE on items shown
+          p - Right Click Item in Char Panel to to Unequip
+          p - Left Click Item in Char Panel to Automatically Search for Items
+          p - Fixed Sigils For DKs
+
+          h4 v3.1.5 - 06/23/2017
+
+          p
+            | - Export functionality added. You can now copy your own or other user's characters
+            | as long as you are logged in.
+
+          h4 v3.1.4 - 06/20/2017
+
+          p - Tooltips for talents and stats changed.
+          p - Detailed tooltips added for defense/expertise/armor.
+          p - Can add/save profs & race for characters.
+
+          h4 v3.1.2 - 06/19/2017
+
+          p - Some internal changes/improvements.
+          p - Visual changes to how stats/tables look.
+
+          h4 v3.1.1 - 06/13/2017
+
+          p - Glyphs in talent page have been implemented.
+
+          h4 v3.1.0 - 06/12/2017
+
+          p - All class talents finished with tooltips. Might be some bugs/mistakes.
+
+          h4 v3.0.6 - 06/07/2017
+
+          p - Paladin talents finished
+          p - Changelog added for the website!
+
+          h4 v3.0.5 - 06/06/2017
+
+          p - Shaman talents finished
+          p - some bugs fixed
+          p - can save talents now
+          p - non-character owners can not modify talents
+
+          h4 v3.0.2 - 06/06/2017
+
+          p - conditions for adding and removing talents implemented
+          p - part of elemental tree finished
+
+          h4 v3.0.1 - 06/05/2017
+
+          p start of character talents & professions
+
+          h4 v3.0.0 - 06/04/2017
+
+          p - added ability to choose character spec
+          p - character specs visible and searchable in search page
+
+          a(target='_blank' href='https://github.com/c3mohamn/warmains/blob/master/dev_logs.txt')
+            p Longer log here.
+
+      div(class="about-container")
+      include partials/footer.jade

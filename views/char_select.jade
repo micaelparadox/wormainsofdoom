@@ -1,0 +1,124 @@
+doctype html
+html(ng-app='charApp' ng-cloak)
+
+  include partials/head.jade
+  link(rel='stylesheet', type="text/css" href='/stylesheets/char_select_style.css')
+
+  body(ng-controller='charctrl')
+      <script>document.body.className += ' fade-out';</script>
+      include partials/navbar.jade
+
+      header(class='char-header')
+        .header-content
+          .header-content-inner
+            h1(id="homeHeading") Your characters
+            hr
+      .container
+        div(class="col-lg-6 col-md-6 col-sm-6 col-xs-12")
+          h3 CREATE NEW CHARACTER
+          hr(class='light')
+          .create_container
+
+            div(class="loginmodal-container" id="char-create")
+              form(action='/character/createChar' method='post')
+
+                h4 Pick a Class
+
+                ul(class='list-inline')
+                  li: img(class='class-icon-sm'
+                          ng-class="{'coloured-icon': selected_class=='paladin'}"
+                          ng-click="selected_class='paladin'"
+                          src='images/class-icons/paladin.png')
+                  li: img(class='class-icon-sm'
+                          ng-class="{'coloured-icon': selected_class=='druid'}"
+                          ng-click="selected_class='druid'"
+                          src='images/class-icons/druid.png')
+                  li: img(class='class-icon-sm'
+                          ng-class="{'coloured-icon': selected_class=='shaman'}"
+                          ng-click="selected_class='shaman'"
+                          src='images/class-icons/shaman.png')
+                  li: img(class='class-icon-sm'
+                          ng-class="{'coloured-icon': selected_class=='hunter'}"
+                          ng-click="selected_class='hunter'"
+                          src='images/class-icons/hunter.png')
+                  li: img(class='class-icon-sm'
+                          ng-class="{'coloured-icon': selected_class=='warrior'}"
+                          ng-click="selected_class='warrior'"
+                          src='images/class-icons/warrior.png')
+                  li: img(class='class-icon-sm'
+                          ng-class="{'coloured-icon': selected_class=='rogue'}"
+                          ng-click="selected_class='rogue'"
+                          src='images/class-icons/rogue.png')
+                  li: img(class='class-icon-sm'
+                          ng-class="{'coloured-icon': selected_class=='mage'}"
+                          ng-click="selected_class='mage'"
+                          src='images/class-icons/mage.png')
+                  li: img(class='class-icon-sm'
+                          ng-class="{'coloured-icon': selected_class=='priest'}"
+                          ng-click="selected_class='priest'"
+                          src='images/class-icons/priest.png')
+                  li: img(class='class-icon-sm'
+                          ng-class="{'coloured-icon': selected_class=='warlock'}"
+                          ng-click="selected_class='warlock'"
+                          src='images/class-icons/warlock.png')
+                  li: img(class='class-icon-sm'
+                          ng-class="{'coloured-icon': selected_class=='death knight'}"
+                          ng-click="selected_class='death knight'"
+                          src='images/class-icons/death knight.png')
+
+                select(ng-hide='true' class="form-control" name="pickclass" ng-model='selected_class')
+                  option(selected value= '') Pick a Class
+                  option(value='paladin') Paladin
+                  option(value='druid') Druid
+                  option(value='shaman') Shaman
+                  option(value='hunter') Hunter
+                  option(value='warrior') Warrior
+                  option(value='rogue') Rogue
+                  option(value='mage') Mage
+                  option(value='priest') Priest
+                  option(value='warlock') Warlock
+                  option(value='death knight') Death Knight
+
+
+                h4 Name
+                input(type="text" name="Name" maxlength=12)
+
+                h4 Description (Optional)
+                textarea(class="form-control" rows=5  maxlength=255
+                         name="description")
+                br
+                input(type="submit" name="createchar"
+                      class="create loginmodal-submit" value="Create")
+
+        div(class="col-lg-6 col-md-6 col-sm-6 col-xs-12")
+          h3 SELECT
+          hr(class='light')
+          h4(class='error-msg') {{message}}
+          .existing_chars
+            table(ng-repeat='char in characters')
+              tr(ng-click = 'select_char(char.name)'
+                 ng-class="{'selected_row': char.name == selected_char}"
+                 ng-dblclick = 'redirect_edit()')
+                td: h3 {{char.name}}
+                td: a(ng-href='/character/profile/'
+                    + user.username + '/{{char.name}}')
+                  img(ng-src='/images/class-icons/{{char.class}}.png'
+                  class='class_icon pull-right')
+          ul(class='list-inline')
+            li: input(type="submit" value='delete' class="delete_char loginmodal-submit"
+                  data-toggle="modal" data-target="#delete-char-modal")
+            li: input(type="submit" value='edit' class="edit_char loginmodal-submit"
+                  ng-click='redirect_edit()')
+
+    div(class="modal fade" id="delete-char-modal" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true")
+    div(class="modal-dialog")
+      div(class="loginmodal-container")
+          h3 Delete {{selected_char}}?
+          input(type="submit" name="confirm" class="confirm loginmodal-submit"
+          value="YES" data-dismiss="modal" ng-click='delete_char()')
+          input(type="submit" name="decline" class="decline loginmodal-submit"
+          value="NO" data-dismiss="modal")
+
+  include partials/footer.jade
+  script(src="/js/char_controller.js")

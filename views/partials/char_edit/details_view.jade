@@ -1,0 +1,67 @@
+div(class='details_view' ng-show="cur_view == 'details'" ng-if='permission')
+  -if (user && username == user.username)
+
+    p(class='success-msg' ng-show="success_msg != ''") {{success_msg}}
+    p(class='error-msg' ng-show="error_msg != ''") {{error_msg}}
+
+    .choose_race
+      h4 Choose a race
+      ul(class='list-inline')
+        li(ng-repeat="race in all_races" ng-click="change_race(race)")
+          img(
+          data-toggle='tooltip' data-placement='bottom' data-html='true'
+          data-original-title="<span style='text-transform:capitalize;'>\
+          {{race}}</span>"
+          ng-class="(character.race == race) ? 'selected_spec' : 'unselected'"
+          ng-src='/images/race-icons/{{race}}.png')
+    br
+
+    .choose_spec
+      h4 Choose a spec
+      ul(class='list-inline')
+        li(ng-click='character.spec = class_specs[character.class][0]')
+          img(
+          data-toggle='tooltip' data-placement='bottom' data-html='true'
+          data-original-title="<span style='text-transform:capitalize;'>\
+          {{class_specs[character.class][0]}}"
+          ng-class="(character.spec == class_specs[character.class][0]) ? 'selected_spec' : 'unselected'"
+          ng-src='/images/spec-icons/{{character.class}}/{{class_specs[character.class][0]}}.jpg')
+        li(ng-click='character.spec = class_specs[character.class][1]')
+          img(
+          data-toggle='tooltip' data-placement='bottom' data-html='true'
+          data-original-title="<span style='text-transform:capitalize;'>\
+          {{class_specs[character.class][1]}}"
+          ng-class="(character.spec == class_specs[character.class][1]) ? 'selected_spec' : 'unselected'"
+          ng-src='/images/spec-icons/{{character.class}}/{{class_specs[character.class][1]}}.jpg')
+        li(ng-click='character.spec = class_specs[character.class][2]')
+          img(
+          data-toggle='tooltip' data-placement='bottom' data-html='true'
+          data-original-title="<span style='text-transform:capitalize;'>\
+          {{class_specs[character.class][2]}}"
+          ng-class="(character.spec == class_specs[character.class][2]) ? 'selected_spec' : 'unselected'"
+          ng-src='/images/spec-icons/{{character.class}}/{{class_specs[character.class][2]}}.jpg')
+
+    br
+    .choose_prof
+      h4 Choose your professions
+        br
+        br
+        ul(class='list-inline')
+          li(ng-repeat="prof in all_profs" ng-click="add_prof(prof, 1)")
+            img(
+            data-toggle='tooltip' data-placement='bottom' data-html='true'
+            data-original-title="<span style='text-transform:capitalize;'>\
+            {{prof}}</span>"
+            ng-class="has_prof(prof, 1) ? 'selected_spec' : 'unselected'"
+            ng-src='/images/trade/{{prof}}.jpg')
+        br
+        ul(class='list-inline')
+          li(ng-repeat="prof in all_profs" ng-click="add_prof(prof, 2)")
+            img(
+            data-toggle='tooltip' data-placement='top' data-html='true'
+            data-original-title="<span style='text-transform:capitalize;'>\
+            {{prof}}</span>"
+            ng-class="has_prof(prof, 2) ? 'selected_spec' : 'unselected'"
+            ng-src='/images/trade/{{prof}}.jpg')
+    br
+    h3(class='view_tab' id='save_talents' ng-click='save_to_db()') Save

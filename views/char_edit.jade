@@ -1,0 +1,220 @@
+doctype html
+html(ng-app='editApp' ng-cloak)
+
+  include partials/head.jade
+  link(rel='stylesheet', type='text/css' href='/stylesheets/char_edit/style.css')
+  link(rel='stylesheet', type='text/css' href='/stylesheets//char_edit/talents.css')
+  link(rel='stylesheet', type='text/css' href='/stylesheets//char_edit/details.css')
+  script(type="text/javascript" src="https://wowgaming.altervista.org/aowow/static/widgets/power.js")
+
+  body(ng-controller='editCtrl' ng-init="gear_view = 'stats'; cur_view='gear'")
+    -if(user && username == user.username)
+      div(ng-init="permission = true")
+    -else
+      div(ng-init="permission = false")
+
+    <script>document.body.className += ' fade-out';</script>
+    include partials/navbar.jade
+
+    header(ng-class="character.class")
+      .header-content
+        .header-content-inner
+          h1 {{character.name}}
+          hr
+          img(ng-src='/images/spec-icons/{{character.class}}/{{character.spec}}.jpg')
+          h3(ng-style="class_color(character.class)") {{character.class}}
+
+    div(class='container' ng-show='character')
+
+      div(class='char_details')
+        ul(class='list-inline')
+          li(ng-show='character.race')
+            img(ng-src='/images/race-icons/{{character.race}}.png' id='race')
+          li(ng-show='character.professions && character.professions[1]')
+            img(ng-src='/images/trade/{{character.professions[1]}}.jpg')
+          li(ng-show='character.professions && character.professions[2]')
+            img(ng-src='/images/trade/{{character.professions[2]}}.jpg')
+
+      ul(class='list-inline' id='view_tabs')
+        li(ng-click="cur_view = 'gear'")
+          h3(class='view_tab'
+          ng-class="{'selected_view': cur_view == 'gear'}") Gear
+
+        li(ng-click="cur_view = 'talents'")
+          h3(class='view_tab'
+          ng-class="{'selected_view': cur_view == 'talents'}") Talents
+
+        li(ng-show='permission' ng-click="cur_view = 'details'")
+          h3(class='view_tab'
+          ng-class="{'selected_view': cur_view == 'details'}") Details
+
+      include partials/char_edit/talents_view.jade
+      include partials/char_edit/details_view.jade
+
+      div(class="col-lg-6 col-md-6 col-sm-6 col-xs-12"  ng-show="cur_view=='gear'")
+        div(class='char_panel')
+          .row
+            ul(class='list-inline')
+
+              li(class='pull-left' id='li_Head')
+                a(href="" id='Head_link')
+                  div(class='item_slot' id='Head_slot'
+                      ng-click="slot='Head'; finditems(search_val)" show-gems slot='Head'
+                      ng-right-click="slot='Head'; unequip_item()"
+                      ng-class="{'selected_slot': slot == 'Head'}")
+              li(class='pull-right' id='li_Hands')
+                a(href="" id='Hands_link')
+                  div(class='item_slot' id='Hands_slot'
+                      ng-click="slot='Hands'; finditems(search_val)" show-gems slot='Hands'
+                      ng-right-click="slot='Hands'; unequip_item()"
+                      ng-class="{'selected_slot': slot == 'Hands'}")
+          .row
+            ul(class='list-inline')
+              li(class='pull-left' id='li_Neck')
+                a(href="" id='Neck_link')
+                  div(class='item_slot' id='Neck_slot'
+                      ng-click="slot='Neck'; finditems(search_val)" show-gems slot='Neck'
+                      ng-right-click="slot='Neck'; unequip_item()"
+                      ng-class="{'selected_slot': slot == 'Neck'}")
+              li(class='pull-right' id='li_Waist')
+                a(href="" id='Waist_link')
+                  div(class='item_slot' id='Waist_slot'
+                      ng-click="slot='Waist'; finditems(search_val)" show-gems slot='Waist'
+                      ng-right-click="slot='Waist'; unequip_item()"
+                      ng-class="{'selected_slot': slot == 'Waist'}")
+          .row
+            ul(class='list-inline')
+              li(class='pull-left' id='li_Shoulders')
+                a(href="" id='Shoulders_link')
+                  div(class='item_slot' id='Shoulders_slot'
+                      ng-click="slot='Shoulders'; finditems(search_val)" show-gems slot='Shoulders'
+                      ng-right-click="slot='Shoulders'; unequip_item()"
+                      ng-class="{'selected_slot': slot == 'Shoulders'}")
+              li(class='pull-right' id='li_Legs')
+                a(href="" id='Legs_link')
+                  div(class='item_slot' id='Legs_slot'
+                      ng-click="slot='Legs'; finditems(search_val)" show-gems slot='Legs'
+                      ng-right-click="slot='Legs'; unequip_item()"
+                      ng-class="{'selected_slot': slot == 'Legs'}")
+          .row
+            ul(class='list-inline')
+              li(class='pull-left' id='li_Back')
+                a(href="" id='Back_link')
+                  div(class='item_slot' id='Back_slot'
+                      ng-click="slot='Back'; finditems(search_val)" show-gems slot='Back'
+                      ng-right-click="slot='Back'; unequip_item()"
+                      ng-class="{'selected_slot': slot == 'Back'}")
+              li(class='pull-right' id='li_Feet')
+                a(href="" id='Feet_link')
+                  div(class='item_slot' id='Feet_slot'
+                      ng-click="slot='Feet'; finditems(search_val)" show-gems slot='Feet'
+                      ng-right-click="slot='Feet'; unequip_item()"
+                      ng-class="{'selected_slot': slot == 'Feet'}")
+          .row
+            ul(class='list-inline')
+              li(class='pull-left' id='li_Chest')
+                a(href="" id='Chest_link')
+                  div(class='item_slot' id='Chest_slot'
+                      ng-click="slot='Chest'; finditems(search_val)" show-gems slot='Chest'
+                      ng-right-click="slot='Chest'; unequip_item()"
+                      ng-class="{'selected_slot': slot == 'Chest'}")
+              li(class='pull-right' id='li_Finger1')
+                a(href="" id='Finger1_link')
+                  div(class='item_slot' id='Finger1_slot'
+                      ng-click="slot='Finger1'; finditems(search_val)" show-gems slot='Finger1'
+                      ng-right-click="slot='Finger1'; unequip_item()"
+                      ng-class="{'selected_slot': slot == 'Finger1'}")
+          .row
+            ul(class='list-inline')
+              li(class='pull-left')
+                div(class='item_slot' id='Shirt_slot')
+                  img(src='/images/empty-slots/UI-EmptyShirt.png')
+              li(class='pull-right' id='li_Finger2')
+                a(href="" id='Finger2_link')
+                  div(class='item_slot' id='Finger2_slot'
+                      ng-click="slot='Finger2'; finditems(search_val)" show-gems slot='Finger2'
+                      ng-right-click="slot='Finger2'; unequip_item()"
+                      ng-class="{'selected_slot': slot == 'Finger2'}")
+          .row
+            ul(class='list-inline')
+              li(class='pull-left')
+                div(class='item_slot' id='Tabard_slot')
+                  img(src='/images/empty-slots/UI-EmptyTabard.png')
+              li(class='pull-right' id='li_Trinket1')
+                a(href="" id='Trinket1_link')
+                  div(class='item_slot' id='Trinket1_slot'
+                      ng-click="slot='Trinket1'; finditems(search_val)"
+                      ng-right-click="slot='Trinket1'; unequip_item()"
+                      ng-class="{'selected_slot': slot == 'Trinket1'}")
+          .row
+            ul(class='list-inline')
+              li(class='pull-left' id='li_Wrist')
+                a(href="" id='Wrist_link')
+                  div(class='item_slot' id='Wrist_slot'
+                      ng-click="slot='Wrist'; finditems(search_val)" show-gems slot='Wrist'
+                      ng-right-click="slot='Wrist'; unequip_item()"
+                      ng-class="{'selected_slot': slot == 'Wrist'}")
+              li(class='pull-right' id='li_Trinket2')
+                a(href="" id='Trinket2_link')
+                  div(class='item_slot' id='Trinket2_slot'
+                      ng-click="slot='Trinket2'; finditems(search_val)"
+                      ng-right-click="slot='Trinket2'; unequip_item()"
+                      ng-class="{'selected_slot': slot == 'Trinket2'}")
+          .row
+            ul(class='list-inline')
+              li(id='li_MainHand'): a(href="" id='MainHand_link')
+                div(class='item_slot' id='MainHand_slot'
+                    ng-click="slot='MainHand'; finditems(search_val)" show-gems slot='MainHand'
+                    ng-right-click="slot='MainHand'; unequip_item()"
+                    ng-class="{'selected_slot': slot == 'MainHand'}")
+              li(id='li_OffHand'): a(href="" id='OffHand_link')
+                div(class='item_slot' id='OffHand_slot'
+                    ng-click="slot='OffHand'; finditems(search_val)" show-gems slot='OffHand'
+                    ng-right-click="slot='OffHand'; unequip_item()"
+                    ng-class="{'selected_slot': slot == 'OffHand'}")
+              li(id='li_Ranged'): a(href="" id='Ranged_link')
+                div(class='item_slot' id='Ranged_slot'
+                    ng-click="slot='Ranged'; finditems(search_val)" show-gems slot='Ranged'
+                    ng-right-click="slot='Ranged'; unequip_item()"
+                    ng-class="{'selected_slot': slot == 'Ranged'}")
+
+      div(class="col-lg-6 col-md-6 col-sm-6 col-xs-12")
+        -if(user && username == user.username)
+          include partials/char_edit/gear_view.jade
+
+      -if (user && username == user.username)
+        div(class='clearfix visible sm')
+      div(class="col-lg-6 col-md-6 col-sm-6 col-xs-12" ng-show="cur_view == 'gear'")
+        include partials/char_edit/stats_template.jade
+
+      p(class='error-msg' ng-show="error_msg != '' && show_save_as") {{error_msg}}
+      -if(user)
+        ul(class='list-inline' class='pull-right')
+          li: input(type='text' class='form-control' placeholder='Name'
+                ng-model='save_as_name' ng-show='show_save_as' value='Name')
+          li: button(type="submit" class="btn btn-danger"
+                     ng-click="save_as()" ng-show='show_save_as') Save
+          li: h3(style='cursor:pointer;color:red;'
+                ng-click='show_save_as = true') Export
+
+    p(ng-show='!character') This character does not exist.
+
+  include partials/footer.jade
+  script(src='/js/charEdit/vars.js')
+  script(src='/js/charEdit/vars_talents.js')
+  script(src='/js/charEdit/glyphs.js')
+  script(src='/js/charEdit/talent_tooltips/deathknight.js')
+  script(src='/js/charEdit/talent_tooltips/druid.js')
+  script(src='/js/charEdit/talent_tooltips/hunter.js')
+  script(src='/js/charEdit/talent_tooltips/mage.js')
+  script(src='/js/charEdit/talent_tooltips/paladin.js')
+  script(src='/js/charEdit/talent_tooltips/priest.js')
+  script(src='/js/charEdit/talent_tooltips/rogue.js')
+  script(src='/js/charEdit/talent_tooltips/shaman.js')
+  script(src='/js/charEdit/talent_tooltips/warlock.js')
+  script(src='/js/charEdit/talent_tooltips/warrior.js')
+  script(src='/js/charEdit/functs.js')
+  script(src='/js/charEdit/functs_talents.js')
+  script(src='/js/charEdit/functs_stats.js')
+  script(src='/js/charEdit/controller.js')
+  script(src='/js/charEdit/directives.js')

@@ -1,0 +1,275 @@
+@import "../theme/variables.less";
+@import "../theme/mixins.less";
+
+// Header Image based on class of character
+header.death.knight { background-image: url('/images/bg/class-bg/dk.jpg'); }
+header.shaman { background-image: url('/images/bg/class-bg/shaman.jpg'); }
+header.paladin { background-image: url('/images/bg/class-bg/paladin.jpg'); }
+header.druid { background-image: url('/images/bg/class-bg/druid.jpg'); }
+header.hunter { background-image: url('/images/bg/class-bg/hunter.jpg'); }
+header.mage { background-image: url('/images/bg/class-bg/mage.jpg'); }
+header.rogue { background-image: url('/images/bg/class-bg/rogue.jpg'); }
+header.warrior { background-image: url('/images/bg/class-bg/warrior.jpg'); }
+header.warlock { background-image: url('/images/bg/class-bg/warlock.jpg'); }
+header.priest { background-image: url('/images/bg/class-bg/priest.jpg'); }
+
+img {
+  border-radius: 3px;
+}
+
+.view_tab {
+  color: rgba(255,255,255,.4);
+  padding: 10px;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: .3s;
+}
+
+.view_tab:hover {
+  color: white;
+  transition: .3s;
+}
+
+.selected_view {
+  color:white;
+  transition: .3s;
+  text-decoration: underline;
+}
+
+.container {
+  // mobile view
+  @media (min-width: 768px) {
+    min-width: 800px;
+  }
+}
+
+
+.gear_view_tab {
+  border-radius: 4px;
+  width: 100px;
+  background-color: rgba(255,255,255,.4);
+  box-shadow: -2px 2px 5px 1px rgba(255,255,255,.3);
+  color:black;
+  opacity: 1;
+  transition: 0.5s;
+  .sans-serif-font;
+  font-weight: 700;
+}
+
+.gear_view_tab:hover {
+  background-color: white;
+  transition: background-color 0.5s;
+  opacity: 1;
+}
+
+.selected_gear_view {
+  background-color: white;
+  transition: background-color 0.5s;
+}
+
+.selected_slot {
+  -webkit-box-shadow: inset 0 0 20px #819FF7;
+  -moz-box-shadow: inset 0 0 20px #819FF7;
+  box-shadow: inset 0 0 20px #819FF7;
+  transition: 0.5s;
+}
+
+#selected_slot, #selected_gem_slot, #selected_enchant_slot {
+  background-image: url('/images/empty-slots/UI-EmptyBag.png');
+}
+
+.char_panel {
+  margin: 0 auto;
+  min-width: 300px;
+  max-width: 450px;
+  animation: 1s fade_in;
+  //border-style: solid;
+  #tabard_slot, #shirt_slot {
+    pointer-events:none;
+    opacity: .5;
+  }
+
+  // Background images for item slots
+  #Head_slot {
+    background-image: url('/images/empty-slots/UI-EmptyHead.png');
+  } #Neck_slot {
+    background-image: url('/images/empty-slots/UI-EmptyNeck.png');
+  } #Shoulders_slot {
+    background-image: url('/images/empty-slots/UI-EmptyShoulders.png');
+  } #Chest_slot {
+    background-image: url('/images/empty-slots/UI-EmptyChest.png');
+  } #Back_slot {
+    background-image: url('/images/empty-slots/UI-EmptyBack.png');
+  } #Wrist_slot {
+    background-image: url('/images/empty-slots/UI-EmptyWrist.png');
+  } #Hands_slot {
+    background-image: url('/images/empty-slots/UI-EmptyHands.png');
+  } #Waist_slot {
+    background-image: url('/images/empty-slots/UI-EmptyWaist.png');
+  } #Legs_slot {
+    background-image: url('/images/empty-slots/UI-EmptyLegs.png');
+  } #Feet_slot {
+    background-image: url('/images/empty-slots/UI-EmptyFeet.png');
+  } #Finger1_slot {
+    background-image: url('/images/empty-slots/UI-EmptyFinger.png');
+  } #Finger2_slot {
+    background-image: url('/images/empty-slots/UI-EmptyFinger.png');
+  } #Trinket1_slot {
+    background-image: url('/images/empty-slots/UI-EmptyTrinket.png');
+  } #Trinket2_slot {
+    background-image: url('/images/empty-slots/UI-EmptyTrinket.png');
+  } #MainHand_slot {
+    background-image: url('/images/empty-slots/UI-EmptyMainHand.png');
+  } #OffHand_slot {
+    background-image: url('/images/empty-slots/UI-EmptyOffHand.png');
+  } #Ranged_slot {
+    background-image: url('/images/empty-slots/UI-EmptyRanged.png');
+  }
+}
+
+// Item Slot styles
+.item_slot {
+  border-radius: 5px;
+  width: 55px;
+  height: 55px;
+  margin-bottom: 3px;
+  background-size: 55px 55px;
+  //box-shadow: 0px 0px 5px 1px rgba(0,0,0,.5);
+  img {
+    width: 55px;
+    height: 55px;
+  }
+  transition: .5s;
+}
+.item_slot:hover {
+  -webkit-box-shadow: inset 0 0 20px #819FF7;
+  -moz-box-shadow: inset 0 0 20px #819FF7;
+  box-shadow: inset 0 0 20px #819FF7;
+  transition: .3s;
+}
+
+// Search bar
+.search_container {
+  select {
+    width: 80px;
+  }
+  animation: 0.5s fade_in;
+  li {
+    animation: 0.8s fade_in;
+  }
+}
+
+.results_table {
+  animation: .5s results_table_slide;
+  max-height: 300px;
+  overflow: auto;
+  border-radius: 2px;
+  a, a:hover {
+    text-decoration: none;
+  }
+  tbody {
+    color: white;
+    tr {
+      cursor: pointer;
+    }
+    tr:hover {
+        background-color: grey;
+        transition: .3s;
+    }
+  }
+  img {
+    height: 35px;
+    width: 35px;
+  }
+}
+
+.stats_container {
+  font-size: 12px;
+  color: white;
+  #stats {
+    // tooltip override
+    .tooltip-inner {
+      font-size: 14px;
+      border: solid;
+      border-radius: 3px;
+      border-width: 1px;
+      border-color: rgba(255,255,255,.5);
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin:  0;
+      min-width: 150px;
+      li {
+        cursor: default;
+        text-align: left;
+        .stat_value {
+          text-align: right;
+          float: right;
+        }
+      }
+      .has_tooltip {
+        cursor: pointer;
+      }
+      li:hover {
+        span {
+          color: #2EFE2E;
+        }
+      }
+    }
+  }
+}
+
+// Equipping/Unequiping and save button styles
+
+#save_talents {
+  color: rgba(44, 218, 0, 1);
+}
+#save_talents:hover {
+  color: rgba(44, 218, 0, .5);
+}
+#reset_talents {
+  color: rgba(218, 72, 0, 1);
+}
+#reset_talents:hover {
+  color: rgba(218, 72, 0, .5);
+}
+#help_talents {
+  color: #00FF44;
+}
+#equip {
+  color: rgba(0, 232, 219, 1);
+}
+#equip:hover {
+  color: rgba(0, 232, 219, .5);
+}
+
+.list-group-item {
+  background-color: rgba(0,0,0,.1);
+  text-align: left;
+  border-width: 0px;
+}
+
+// Keyframe animations
+@keyframes results_table_slide {
+  from {
+    opacity: 0;
+    height: 0;
+  } to {
+    opacity: 1;
+    height: 300px;
+  }
+}
+
+@keyframes fade_in {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}

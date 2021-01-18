@@ -1,0 +1,34 @@
+doctype html
+html
+  include partials/head.jade
+  body
+  <script>document.body.className += ' fade-out';</script>
+  include partials/navbar.jade
+  br
+  header
+    .header-content
+      .header-content-inner
+        h1(id="homeHeading") Hello #{user.name}
+        hr
+
+  .container
+    div(class="col-lg-6 col-md-6 col-sm-6 col-xs-12")
+      h3 Your Information
+        hr(class='light')
+      div(class="loginmodal-container" id="user-information")
+        p(class='pull-left') Account: #{user.username}
+        p(class='pull-left') Email: #{user.email}
+
+    div(class="col-lg-6 col-md-6 col-sm-6 col-xs-12")
+      h3 Change Password
+        hr(class='light')
+      div(class="loginmodal-container" id="password-change")
+        form(action="/users/changeinfo" method="post")
+          input(type="password" name="oldpass" placeholder="Old Password")
+          input(type="password" name="newpass" placeholder="New Password")
+          input(type="password" name="newpassconfirm"
+                placeholder="Confirm New Password")
+          input(type="submit" class="login loginmodal-submit"
+                value="Change Information" name="changeinfo")
+
+  include partials/footer.jade

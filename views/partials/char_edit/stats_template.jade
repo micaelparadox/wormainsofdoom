@@ -1,0 +1,130 @@
+div(class='stats_container')
+  h3 Stat Gains
+
+  table(class='table' id='stats')
+    tr
+      td
+        p Defensives
+        ul
+          li(class='has_tooltip'
+          data-toggle='tooltip' data-placement='right' data-html='true'
+          data-original-title="\
+          Armor {{stats.Armor - stats.BonusArmor}} +  \
+          <span style='color:#2EFE2E;'>{{stats.BonusArmor || 0}}</span><br>\
+          <span style='color:#DAA500;font-size:11px;'> \
+          Physical Damage Reduction (lvl 80) {{stats.ArmorPercentage80}}%<br>\
+          Physical Damage Reduction (lvl 83) {{stats.ArmorPercentage83}}%\
+          </span>")
+            span Armor
+            span(class='stat_value') {{stats.Armor || 0}}
+          li
+            span Dodge Rating
+            span(class='stat_value') {{stats.DodgeRating || 0}}
+          li
+            span Parry Rating
+            span(class='stat_value') {{stats.ParryRating || 0}}
+          li
+            span Defense Rating
+            span(class='stat_value') {{stats.DefenseRating || 0}}
+          li(class='has_tooltip'
+          data-toggle='tooltip' data-placement='right' data-html='true'
+          data-original-title="\
+          Defense 400 +  \
+          <span style='color:#2EFE2E;'>{{stats.Defense - 400}}</span><br>\
+          <span style='color:#DAA500;font-size:11px;'> \
+          Increases chance to Dodge, Block and Parry by {{stats.DefensePercentage}}%<br>\
+          Decreases chance to be hit and critically hit by {{stats.DefensePercentage}}%\
+          </span>")
+            span Defense
+            span(class='stat_value') {{stats.Defense || 400}}
+          li
+            span Resilience
+            span(class='stat_value') {{stats.Resilience || 0}}
+      td
+        p Base Stats
+        ul
+          li
+            span Stamina
+            span(class='stat_value') {{stats.Stamina || 0}}
+          li
+            span Strength
+            span(class='stat_value') {{stats.Strength || 0}}
+          li
+            span Agility
+            span(class='stat_value') {{stats.Agility || 0}}
+          li
+            span Intellect
+            span(class='stat_value') {{stats.Intellect || 0}}
+          li
+            span Spirit
+            span(class='stat_value') {{stats.Spirit || 0}}
+
+    tr
+      td
+        p Spell
+        ul
+          li
+            span Spell Power
+            span(class='stat_value') {{stats.SpellPower || 0}}
+          li
+            span Haste
+            span(class='stat_value') {{stats.HasteRating || 0}}
+          li
+            span Spell Pen
+            span(class='stat_value') {{stats.SpellPenetration || 0}}
+          li
+            span Mp5
+            span(class='stat_value') {{stats.Mp5 || 0}}
+          li
+            span Spell Hit Rating
+            span(class='stat_value') {{stats.SpellHitRating || 0}} ({{stats.SpellHitRatingPercentage || 0}}%)
+          li
+            span Crit Rating
+            span(class='stat_value') {{stats.SpellCritRating || 0}} ({{stats.SpellCritRatingPercentage || 0}}%)
+      td
+        p Physical
+        ul
+          li
+            span Attack Power
+            span(class='stat_value') {{stats.AttackPower || 0}}
+          li
+            span Expertise Rating
+            span(class='stat_value') {{stats.ExpertiseRating || 0}}
+          li(class='has_tooltip'
+          data-toggle='tooltip' data-placement='left' data-html='true'
+          data-original-title="\
+          Expertise {{stats.Expertise || 0}}<br>\
+          <span style='color:#DAA500;font-size:11px;'> \
+          Reduces chance to be dodged or parried by {{stats.ExpertisePercentage || 0}}%\
+          </span>")
+            span Expertise
+            span(class='stat_value') {{stats.Expertise || 0}}
+          li
+            span ArP
+            span(class='stat_value') {{stats.ArmorPenetrationRating || 0}} ({{stats.ArmorPenetrationRatingPercentage || 0}}%)
+          li
+            span Hit Rating
+            span(class='stat_value') {{stats.HitRating || 0}} ({{stats.HitRatingPercentage || 0}}%)
+          li
+            span Crit Rating
+            span(class='stat_value') {{stats.CritRating || 0}} ({{stats.CritRatingPercentage || 0}}%)
+
+    tr
+      td
+        p Resists
+        ul
+          li
+            span Arcane Resistance
+            span(class='stat_value') {{stats.ArcaneResistance || 0}}
+          li
+            span Fire Resistance
+            span(class='stat_value') {{stats.FireResistance || 0}}
+          li
+            span Nature Resistance
+            span(class='stat_value') {{stats.NatureResistance || 0}}
+          li
+            span Frost Resistance
+            span(class='stat_value') {{stats.FrostResistance || 0}}
+          li
+            span Shadow Resistance
+            span(class='stat_value') {{stats.ShadowResistance || 0}}
