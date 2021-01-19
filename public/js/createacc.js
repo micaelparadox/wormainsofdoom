@@ -40,7 +40,7 @@ var email_msg = $("#no-email");
 
 var regusername = /^[a-zA-Z0-9_-]{3,16}$/;
 var regpass = /^[a-z0-9_-]{6,18}$/;
-var regemail = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+var regemail = /^([a-z0-9_\.-]+)&([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 
 $(document).ready(function(){
     // ----------------------
