@@ -11,8 +11,8 @@ var nodemailer = require('nodemailer');
 var smtpTransport = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
-      user: 'warmains.passreset@gmail.com',
-      pass: 'warmains'
+      user: 'youngceoshootz@gmail.com',
+      pass: '91215920d'
   }
 });
 
@@ -223,7 +223,7 @@ router.post('/forgot', function(req, res, next) {
     function(token, user, done) {
       var mailOptions = {
         to: user.email,
-        from: 'warmains.passreset@gmail.com',
+        from: 'youngceoshootz@gmail.com',
         subject: 'Warmains Password Reset',
         text: 'You are receiving this because you (or someone else) have ' +
           'requested the reset of the password for your account.\n\n' +
@@ -302,7 +302,7 @@ router.post('/reset/:token', function(req, res) {
   function(user, done) {
     var mailOptions = {
       to: user.email,
-      from: 'warmains.passreset@gmail.com',
+      from: 'youngceoshootz@gmail.com',
       subject: 'Your password has been changed',
       text: 'Hello,\n\n' +
         'This is a confirmation that the password for your account ' +
