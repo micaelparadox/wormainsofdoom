@@ -225,7 +225,7 @@ function alter_stats(stats) {
   // ExpertiseRating + Expertise (note: these are different numbers)
   if (stats['ExpertiseRating']) {
     // adding expertise
-    stats['Expertise'] = (stats['ExpertiseRating'] / 7.696).toFixed(2);
+    stats['Expertise'] = (stats['ExpertiseRating'] / 8.1975).toFixed(2);
 
     // percentage
     stats['ExpertisePercentage'] = (stats['Expertise'] / 4).toFixed(2);
