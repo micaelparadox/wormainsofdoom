@@ -186,7 +186,7 @@ function set_slot_image(slot, item) {
     '.jpg)');
 
   // Add link for the tooltip of item
-  $('#' + slot + '_link').attr('href', 'https://wowgaming.altervista.org/aowow?' + Idpath);
+  $('#' + slot + '_link').attr('href', 'https://wotlkdb.com?' + Idpath);
   $('#' + slot + '_link').attr('target', '_blank');
 }
 
