@@ -1,5 +1,5 @@
 # warmains
-Link do site: https://wormainsofdoom.herokuapp.com
+Link do site: https://app-warmains.herokuapp.com
 
 ![](https://i.imgur.com/LxIdKOW.jpg)
 
