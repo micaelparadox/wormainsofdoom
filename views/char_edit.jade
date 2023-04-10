@@ -7,9 +7,9 @@ html(ng-app='editApp' ng-cloak)
   link(rel='stylesheet', type='text/css' href='/stylesheets//char_edit/details.css')
   script(type='text/javascript').
       $WH = { wowheadRemote: true };
-      var g_staticUrl = "https://wotlkdb.com/static";
-      var g_host = "https://wotlkdb.com";
-  script(type="text/javascript" src="https://wotlkdb.com/static/widgets/power.js")
+      var g_staticUrl = "https://wowgaming.altervista.org/aowow/static";
+      var g_host = "https://wowgaming.altervista.org/aowow";
+  script(type="text/javascript" src="https://wowgaming.altervista.org/aowow/static/widgets/power.js")
 
   body(ng-controller='editCtrl' ng-init="gear_view = 'stats'; cur_view='gear'")
     -if(user && username == user.username)
