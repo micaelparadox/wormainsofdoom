@@ -158,7 +158,7 @@ function compare_slot(slot, item, char) {
   // to prevent warriors from dual wielding with polearm/staff
   var case6 = true;
   if (char_items.mainhand && ((char_items.mainhand.Type == 'Polearm' ||
-      char_items.mainhand.Type == 'Staff') && (slot2 == 'TwoHand' &&
+    char_items.mainhand.Type == 'Staff') && (slot2 == 'TwoHand' &&
       slot1 == 'OffHand')))
     case6 = false;
   else case6 = true;
@@ -186,7 +186,7 @@ function set_slot_image(slot, item) {
     '.jpg)');
 
   // Add link for the tooltip of item
-  $('#' + slot + '_link').attr('href', 'https://wotlkdb.com?' + Idpath);
+  $('#' + slot + '_link').attr('href', 'https://wowgaming.altervista.org/aowow/?' + Idpath);
   $('#' + slot + '_link').attr('target', '_blank');
 }
 
@@ -269,11 +269,11 @@ function insert_gem_socket(slot, socket_num) {
     $(socket).hide().insertAfter('#li_' + slot).show('normal');
 
   // disable the links
-  $('#socket' + socket_num + '_link').click(function() {
+  $('#socket' + socket_num + '_link').click(function () {
     return false;
   });
   // add the pointer on hover
-  $('#socket' + socket_num + '_slot').hover(function() {
+  $('#socket' + socket_num + '_slot').hover(function () {
     $(this).css('cursor', 'pointer');
   });
   // add class to highlight socket when selected
